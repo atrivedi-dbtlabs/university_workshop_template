@@ -61,22 +61,28 @@ stores as (
 joined as (
 
     select
+        --keys
         i.item_id,
         i.order_id,
         i.sku,
+        --order context
         o.customer_id,
         o.store_id,
         o.ordered_at,
         o.order_date,
+        --product attributes
         p.product_name,
         p.product_type,
         p.product_description,
+        --store attributes
         s.store_name,
         s.opened_at as store_opened_at,
         s.tax_rate,
+        --cost basis / supply attributes
         sup.supply_id,
         sup.supply_name,
         sup.is_perishable,
+        --unit economics
         cast(1 as int64) as units_sold,
         cast(p.product_price as numeric) as unit_revenue,
         cast(sup.supply_cost as numeric) as unit_cost,
