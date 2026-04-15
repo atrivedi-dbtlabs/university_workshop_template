@@ -10,7 +10,7 @@ renamed as (
     select
         id as supply_id,
         name as supply_name,
-        cast(cost as numeric) as supply_cost,
+        {{ cents_to_dollars('cost') }} as supply_cost,
         cast(perishable as bool) as is_perishable,
         sku
 
